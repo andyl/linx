@@ -1,0 +1,12 @@
+/_build/
+/cover/
+/deps/
+/doc/
+/.fetch
+erl_crash.dump
+*.ez
+purlex-*.tar
+npm-debug.log
+/assets/node_modules/
+/priv/static/
+/rel/
