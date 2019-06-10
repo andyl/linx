@@ -12,7 +12,8 @@ config :purlex, PurlexWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "zizcseJn0GfzErRiCoSaL1c/McM779vXC9z2N531SpNuinu8G2D7xveY4tJec2FY",
   render_errors: [view: PurlexWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Purlex.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Purlex.PubSub, adapter: Phoenix.PubSub.PG2],
+  server: true
 
 # Configures Elixir's Logger
 config :logger, :console,
