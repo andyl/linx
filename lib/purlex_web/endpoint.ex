@@ -40,7 +40,7 @@ defmodule PurlexWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_purlex_key",
-    signing_salt: "xpnvU+sO"
+    signing_salt: "U8pAjh4L"
 
   plug PurlexWeb.Router
 end

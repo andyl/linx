@@ -1,5 +1,4 @@
 <section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Purlex" %></h1>
-  <p>Your personal link shortener.</p>
+<h1><%= gettext "Welcome to %{name}!", name: "Purlex" %></h1>
+<p>Your personal link shortener</p>
 </section>
-

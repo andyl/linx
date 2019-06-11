@@ -5,7 +5,7 @@ defmodule Purlex.MixProject do
     [
       app: :purlex,
       version: "0.1.0",
-      elixir: "~> 1.5",
+      elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -18,7 +18,7 @@ defmodule Purlex.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Purlex.Application, []},
+      mod: {Purlex, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -32,14 +32,22 @@ defmodule Purlex.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # ----- phoenix
       {:phoenix, "~> 1.4.6"},
-      {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:amnesia, github: "noizu/amnesia"}
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      # ----- util
+      {:jason, "~> 1.0"},
+      {:gettext, "~> 0.11"},
+      # ----- persistence
+      {:amnesia, github: "noizu/amnesia"},
+      # ----- auth
+      {:comeonin, "~> 4.1"},
+      {:pbkdf2_elixir, "~> 0.12"},
+      # ----- development and test
+      {:mix_test_watch, "~> 0.8", only: :dev}
     ]
   end
 end
