@@ -21,8 +21,6 @@ config :purlex, PurlexWeb.Endpoint,
     ]
   ]
 
-config :mix_test_watch, clear: true
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

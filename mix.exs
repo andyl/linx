@@ -18,7 +18,7 @@ defmodule Purlex.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Purlex, []},
+      mod: {Purlex.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -42,10 +42,7 @@ defmodule Purlex.MixProject do
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
       # ----- persistence
-      {:amnesia, github: "noizu/amnesia"},
-      # ----- auth
-      {:comeonin, "~> 4.1"},
-      {:pbkdf2_elixir, "~> 0.12"},
+      {:persistent_ets, "~> 0.1.0"},
       # ----- development and test
       {:mix_test_watch, "~> 0.8", only: :dev}
     ]
