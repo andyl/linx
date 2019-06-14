@@ -9,10 +9,16 @@ defmodule Purlex.Application do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
+      Purlex.Data.LinkStore,
+      Purlex.Data.LogStore,
       PurlexWeb.Endpoint
       # Starts a worker by calling: Purlex.Worker.start_link(arg)
       # {Purlex.Worker, arg},
     ]
+    
+    # Start the datastores...
+    # IO.inspect Purlex.Data.LogStore.start()
+    # Purlex.Data.LinkStore.start()
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

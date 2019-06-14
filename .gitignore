@@ -11,3 +11,5 @@ npm-debug.log
 /priv/static/
 /rel/
 /.elixir_ls/
+/ets/
+/ets/*

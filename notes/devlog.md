@@ -18,12 +18,27 @@ Routes
 
 Return types: HTML or JSON
 
+## 2019-06-11 TUE
+
+- [x] Regen the app
+- [x] Change name of Account object
+- [x] Cleanup the HTML
+
+## 2019-06-12 WED
+
+- [x] Create an API for the storage object
+
+## 2019-06-13 THU
+
+- [x] Launch the storage objects in a genserver
+
 ## TBD
 
-- [ ] Regen the app
-- [ ] Create an API for the link object
-- [ ] Cleanup the HTML
+- [ ] Create tests for the link object
+- [ ] Create tests for the log object
 
-- [ ] Change name of Account object
+- [ ] Create stats/index with mocked-up data
+- [ ] Create stats/show with mocked-up data
+
 - [ ] Add LiveView
 
