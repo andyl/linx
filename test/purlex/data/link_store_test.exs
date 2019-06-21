@@ -1,3 +1,0 @@
-# lineA
-# lineB
-# lineC

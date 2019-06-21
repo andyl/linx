@@ -8,5 +8,4 @@ defmodule Purlex.Data.LinkTest do
       assert %Link{}
     end
   end
-  
 end

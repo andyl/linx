@@ -1,32 +1,39 @@
 defmodule Purlex.Data.LogStore do
   use GenServer
 
-  @basepath "ets"
-  @tablesym :logs
-  @filepath "logstore.dat"
+  alias Purlex.Data.GenStore
 
+  @moduledoc "A data-store for links."
+
+  @tablekey :logs
+  @filepath "/tmp/logstore.dat"
+
+  @doc "For calling at startup time."
   def start_link(data \\ []) do
     GenServer.start_link(__MODULE__, data)
   end
 
+  @doc "Start the linkstore."
   def init(data \\ []) do
     start()
-    # IO.puts("------------------------------")
-    # IO.puts("STARTING LOGSTORE (#{result})")
-    # IO.puts("------------------------------")
     {:ok, data}
   end
 
-  def start do
-    unless File.dir?(@basepath), do: File.mkdir(@basepath)
-    PersistentEts.new(@tablesym, @filepath, [:named_table, :public])
-  end
+  @doc "Start the logstore using default tablekey and filepath."
+  def start, do: start(@tablekey, @filepath)
 
-  def insert(tuple) do
-    :ets.insert(@tablesym, tuple)
-  end
+  @doc "Start the logstore with explicit tablekey and filepath."
+  def start(sym, path), do: GenStore.start(sym, path)
 
-  def lookup(key) do
-    :ets.lookup(@tablesym, key)
-  end
+  @doc "Insert a tuple into the default data-store."
+  def insert(tuple), do: insert(@tablekey, tuple)
+
+  @doc "Insert a tuple into a specific data-store."
+  def insert(sym, tuple), do: GenStore.insert(sym, tuple)
+
+  @doc "Lookup tuple from default data-store."
+  def lookup(key), do: lookup(@tablekey, key)
+
+  @doc "Lookup tuple from specific data-store."
+  def lookup(sym, key), do: GenStore.lookup(sym, key)
 end

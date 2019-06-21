@@ -32,6 +32,10 @@ Return types: HTML or JSON
 
 - [x] Launch the storage objects in a genserver
 
+## 2019-06-19 FRI
+
+- [x] Update Vim environment
+
 ## TBD
 
 - [ ] Create tests for the link object
