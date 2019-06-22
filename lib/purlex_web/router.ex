@@ -16,8 +16,9 @@ defmodule PurlexWeb.Router do
 
   scope "/", PurlexWeb do
     pipe_through :browser
+    live "/", CounterLive
 
-    get "/", HomeController, :index
+    # get "/", HomeController, :index
     get "/urls", HomeController, :urls
     get "/logs", HomeController, :logs
     get "/stats", HomeController, :stats
