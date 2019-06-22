@@ -4,7 +4,8 @@ config :purlex, PurlexWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "6an/66UtrIziKo/2Z2xOQxstnXhq89US+qRHG+00whopQRkXMcWmMM11a1KIZT7M",
   render_errors: [view: PurlexWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Purlex.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Purlex.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "SECRETKEYWORD"]
 
 config :phoenix_active_link, :defaults,
   class_active: "nav-link active",

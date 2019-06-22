@@ -51,14 +51,13 @@ Return types: HTML or JSON
 
 - [x] Conditional render active links
 - [x] Work with HTML or JSON pages
+- [ ] Add LiveView
 - [ ] Build out working pages
 
 ## TBD
 
 - [ ] Create stats/index with mocked-up data
 - [ ] Create stats/show with mocked-up data
-
-- [ ] Add LiveView
 
 - [ ] Elixir Release
 - [ ] Docker Release
