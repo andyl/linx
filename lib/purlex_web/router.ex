@@ -20,12 +20,9 @@ defmodule PurlexWeb.Router do
     get "/urls", HomeController, :urls
     get "/logs", HomeController, :logs
     get "/stats", HomeController, :stats
-
-    get "/page", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PurlexWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PurlexWeb do
+    pipe_through :api
+  end
 end

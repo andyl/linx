@@ -1,8 +1,7 @@
 defmodule Purlex.Data.Link do
   @ctx %{filepath: "/tmp/linkstore.dat", tablekey: :links}
-  @url "http://mysite.com/"
 
-  defstruct [:base_url, :hash_url, :ts_creation, :ts_last_use, :use_count]
+  defstruct [:address_base, :address_hash, :ts_creation, :ts_last_use, :use_count]
 
   alias Purlex.Data.GenStore
   alias Purlex.Data.Link
@@ -13,39 +12,39 @@ defmodule Purlex.Data.Link do
   We record a single record for each URL in the system.
 
   Payload elements:
-  - base_url - the input url
-  - hash_url - the shortened url
-  - ts_creation - timestamp of the link creation
+  - address_base - the input address
+  - address_hash - the address hash
+  - ts_creation - timestamp of the hash creation
   - ts_last_use - timestamp of last lookup
   - use_count - number of lookups
 
-  The hash_url is used as the lookup key to retrieve the payload from the
+  The address_hash is used as the lookup key to retrieve the payload from the
   datastore.  
   """
 
   @doc """
-  Create link payload, save in datastore, return the hash_url.
+  Create link payload, save in datastore, return the address_hash.
   """
-  def create(base_url, ctx \\ @ctx) do
-    base_url
+  def create(address_base, ctx \\ @ctx) do
+    address_base
     |> create_payload()
     |> save_payload(ctx)
   end
 
   @doc """
-  Lookup the hash_url, update the use_count, return link payload.
+  Lookup the address_hash, update the use_count, return link payload.
   """
-  def lookup(hash_url, ctx \\ @ctx) do
-    get_payload(hash_url, ctx)
+  def lookup(address_hash, ctx \\ @ctx) do
+    get_payload(address_hash, ctx)
     |> update_payload(ctx)
   end
 
-  defp create_payload(base_url) do
+  defp create_payload(address_base) do
     time_now = DateTime.utc_now()
 
     %Link{
-      base_url: base_url,
-      hash_url: @url <> hash(base_url),
+      address_base: address_base,
+      address_hash: hash(address_base),
       ts_creation: time_now,
       ts_last_use: time_now,
       use_count: 0
@@ -56,7 +55,7 @@ defmodule Purlex.Data.Link do
     :md5
     |> :crypto.hash(string)
     |> Base.url_encode64(padding: false)
-    |> String.slice(1..5)
+    |> String.slice(1..6)
   end
 
   defp start_data_store(ctx) do
@@ -74,15 +73,15 @@ defmodule Purlex.Data.Link do
 
   defp save_payload(payload, ctx) do
     start_data_store(ctx)
-    GenStore.insert(ctx.tablekey, {payload.hash_url, payload})
-    payload.hash_url
+    GenStore.insert(ctx.tablekey, {payload.address_hash, payload})
+    payload.address_hash
   end
 
   defp update_payload(payload, ctx) do
     update = with date <- DateTime.utc_now(),
          count <- payload.use_count + 1, do:
       %Link{payload | ts_last_use: date, use_count: count}
-    GenStore.insert(ctx.tablekey, {update.hash_url, update})
+    GenStore.insert(ctx.tablekey, {update.address_hash, update})
     update
   end
 end

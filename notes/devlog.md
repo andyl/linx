@@ -49,8 +49,9 @@ Return types: HTML or JSON
 
 ## 2019-06-22 SAT
 
-- [ ] Conditional render active links
-- [ ] Work with HTML or JSON pages
+- [x] Conditional render active links
+- [x] Work with HTML or JSON pages
+- [ ] Build out working pages
 
 ## TBD
 
@@ -59,6 +60,6 @@ Return types: HTML or JSON
 
 - [ ] Add LiveView
 
-- [ ] Create a release
-- [ ] Package the release in a docker container
+- [ ] Elixir Release
+- [ ] Docker Release
 
