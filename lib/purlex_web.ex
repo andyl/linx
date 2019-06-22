@@ -42,6 +42,7 @@ defmodule PurlexWeb do
       import PurlexWeb.ErrorHelpers
       import PurlexWeb.Gettext
       alias PurlexWeb.Router.Helpers, as: Routes
+      import PhoenixActiveLink
     end
   end
 

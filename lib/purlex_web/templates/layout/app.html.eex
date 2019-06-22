@@ -16,9 +16,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item"><a class='nav-link' href="/urls">URLS</a></li>
-          <li class="nav-item"><a class='nav-link' href="/logs">LOGS</a></li>
-          <li class="nav-item"><a class='nav-link' href="/stats">STATS</a></li>
+          <%= hdr_link(@conn, "URLS", "/urls") %>
+          <%= hdr_link(@conn, "LOGS", "/logs") %>
+          <%= hdr_link(@conn, "STATS", "/stats") %>
         </ul>
       </div>
     </nav>
