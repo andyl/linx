@@ -32,17 +32,21 @@ defmodule Purlex.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # ----- phoenix
+      # ----- phoenix backend
       {:phoenix, "~> 1.4.6"},
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      # ----- phoenix view helpers
+      {:phoenix_active_link, "~> 0.2.1"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
       # ----- persistence
       {:persistent_ets, "~> 0.1.0"},
+      # ----- monitoring and tracing
+      {:observer_cli, "~> 1.5"},
       # ----- development and test
       {:mix_test_watch, "~> 0.8", only: :dev}
     ]

@@ -16,7 +16,12 @@ defmodule PurlexWeb.Router do
   scope "/", PurlexWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
+    get "/urls", HomeController, :urls
+    get "/logs", HomeController, :logs
+    get "/stats", HomeController, :stats
+
+    get "/page", PageController, :index
   end
 
   # Other scopes may use custom stacks.

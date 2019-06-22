@@ -9,10 +9,11 @@ Validations
 - target page must exist
 
 Routes
-- get /                - show intro page with forms
+- get /                - intro page with forms
 - get /:key            - redirect to :val or show error form
 - get /stats/:key      - show stats for :key
 - get /create?url=:url - show key
+- get /urls            - list of URLs
 - get /log             - hit log (live view log update)
 - get /stats           - stat page (live view table filter/sort)
 
@@ -32,17 +33,32 @@ Return types: HTML or JSON
 
 - [x] Launch the storage objects in a genserver
 
-## 2019-06-19 FRI
+## 2019-06-20 THU
 
 - [x] Update Vim environment
+- [x] Create test for GenStore module
+
+## 2019-06-21 FRI
+
+- [x] Create the link module
+- [x] Create the log module
+- [x] Design the web pages
+- [x] Add bootstrap
+- [x] Make a nav header (Home | URLs | Log | Stats)
+- [x] Build out placeholder pages
+
+## 2019-06-22 SAT
+
+- [ ] Conditional render active links
+- [ ] Work with HTML or JSON pages
 
 ## TBD
-
-- [ ] Create tests for the link object
-- [ ] Create tests for the log object
 
 - [ ] Create stats/index with mocked-up data
 - [ ] Create stats/show with mocked-up data
 
 - [ ] Add LiveView
+
+- [ ] Create a release
+- [ ] Package the release in a docker container
 

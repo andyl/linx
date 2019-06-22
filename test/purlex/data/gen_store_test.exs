@@ -4,7 +4,7 @@ defmodule Purelex.Data.GenStoreTest do
   alias Purlex.Data.GenStore
 
   setup do
-    random_context()
+    GenStore.test_context()
   end
 
   describe "#start / #stop" do
@@ -43,6 +43,15 @@ defmodule Purelex.Data.GenStoreTest do
       assert GenStore.lookup(ctx.tablekey, :qwer) == [qwer: 1]
       cleanup(ctx)
     end
+
+    test "updates values", ctx do
+      assert GenStore.start(ctx.tablekey, ctx.filepath)
+      assert GenStore.insert(ctx.tablekey, {"asdf", 1})
+      assert GenStore.lookup(ctx.tablekey, "asdf") == [{"asdf", 1}]
+      assert GenStore.insert(ctx.tablekey, {"asdf", 2})
+      assert GenStore.lookup(ctx.tablekey, "asdf") == [{"asdf", 2}]
+      cleanup(ctx)
+    end
   end
 
   describe "#stop" do
@@ -56,13 +65,17 @@ defmodule Purelex.Data.GenStoreTest do
     end
   end
 
+  describe "bag datastores" do
+    test "stores all inserts", ctx do
+      assert GenStore.start(ctx.tablekey, ctx.filepath, [:bag])
+      assert GenStore.insert(ctx.tablekey, {"asdf", 1})
+      assert GenStore.lookup(ctx.tablekey, "asdf") == [{"asdf", 1}]
+      assert GenStore.insert(ctx.tablekey, {"asdf", 2})
+      assert GenStore.lookup(ctx.tablekey, "asdf") == [{"asdf", 1}, {"asdf", 2}]
+      cleanup(ctx)
+    end
+  end
+
   defp cleanup(ctx), do: GenStore.stop(ctx.tablekey, ctx.filepath)
 
-  defp random_context do
-    with num <- Enum.random(10000..99999),
-         do: [
-           tablekey: String.to_atom("link_#{num}"),
-           filepath: "/tmp/genstore_test_#{num}.dat"
-         ]
-  end
 end
