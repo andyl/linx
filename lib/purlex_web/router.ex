@@ -22,7 +22,7 @@ defmodule PurlexWeb.Router do
     get "/logs", HomeController, :logs
     get "/stats", HomeController, :stats
 
-    live "/count", PurlexWeb.CounterLive
+    live "/count", CounterLive
   end
 
   scope "/api", PurlexWeb do
