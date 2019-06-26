@@ -1,9 +1,24 @@
 <h3>LiveView Counter</h3>
 
 <div>
-  <h1 phx-click="boom">The count is: <%= @val %></h1>
+  <h4>The count is: <%= @val %></h4>
   <button phx-click="dec">-</button>
   <button phx-click="inc">+</button>
 </div>
 
+<p></p>
 
+<h3>LiveView Clock</h3>
+
+Right now it is <%= @date %>
+
+<p></p>
+
+<h3>LiveView Form</h3>
+
+<form phx-change="suggest" phx-submit="search">
+  <input type="text" name="q" value="<%= @query %>" 
+         placeholder="URL..." />
+         <%= if @changed, do: "changed" %>
+  </input>
+</form>

@@ -43,6 +43,7 @@ defmodule Purlex.MixProject do
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
+      {:timex, "~> 3.1"},
       # ----- persistence
       {:persistent_ets, "~> 0.1.0"},
       # ----- monitoring and tracing

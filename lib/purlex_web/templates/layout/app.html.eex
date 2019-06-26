@@ -19,10 +19,13 @@
           <%= hdr_link(@conn, "URLS", "/urls") %>
           <%= hdr_link(@conn, "LOGS", "/logs") %>
           <%= hdr_link(@conn, "STATS", "/stats") %>
+          <%= hdr_link(@conn, "COUNT", "/count") %>
+        </ul>
+        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+          <li class="text-white"><%= live_render(@conn, PurlexWeb.TimeStampLcl) %></li>
         </ul>
       </div>
-    </nav>
-
+      </nav>
     <div class="container">
       <%= if info_msg = get_flash(@conn, :info) do %>
         <p class="alert alert-info" role="alert"><%= info_msg %></p>
