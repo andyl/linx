@@ -21,7 +21,7 @@
           <%= hdr_link(@conn, "STATS", "/stats") %>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-          <li class="text-white"><%= live_render(@conn, PurlexWeb.TimeStampLcl) %></li>
+          <li class="text-white"><%= live_render(@conn, PurlexWeb.TimeLcl) %></li>
         </ul>
       </div>
       </nav>

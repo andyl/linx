@@ -1,4 +1,4 @@
-defmodule PurlexWeb.TimeStampLcl do
+defmodule PurlexWeb.TimeLcl do
   use Phoenix.LiveView
   use Timex
 
