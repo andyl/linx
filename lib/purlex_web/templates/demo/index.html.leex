@@ -1,23 +1,32 @@
 <h3>LiveView Counter</h3>
 
 <div>
-  <h4>The count is: <%= @val %></h4>
+  <h4>The count is: <%= @count %></h4>
   <button phx-click="dec">-</button>
   <button phx-click="inc">+</button>
 </div>
 
-<p></p>
+<div style='height: 50px;'></div>
 
 <h3>LiveView Clock</h3>
 
-Right now it is <%= @date %>
+Current time is <%= @date %>
 
-<p></p>
+<div style='height: 50px;'></div>
 
-<h3>LiveView Form</h3>
+<h3>LiveView Text Input</h3>
 
-<form phx-change="validate" phx-submit="save">
-  <input type="text" name="q" value="<%= @query %>" placeholder="URL..." />
-  </input>
-  <%= if @changed, do: "changed" %>
+<form phx-change="update_string">
+  <input type="text" name="str" placeholder="String..." />
+  </input> <%= @update_str %>
+</form>
+
+<div style='height: 50px;'></div>
+
+<h3>LiveView Url Validation</h3>
+
+<form phx-change="validate_url" phx-submit="save_url">
+  <input type="text" name="url" placeholder="URL..." />
+  </input> 
+  <%= if @valid_url, do: "valid url", else: "invalid url - needs <scheme>://<host>/<path>" %>
 </form>

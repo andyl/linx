@@ -9,32 +9,64 @@ defmodule PurlexWeb.Demo do
 
   def mount(_session, socket) do
     :timer.send_interval(10000, self(), :tick)
-    {:ok, assign(socket, val: 0, query: nil, changed: false, date: ldate())}
+    {:ok, assign(socket, count: 0, valid_url: false, update_str: "", date: ldate())}
   end
+
+  # ----- clock
 
   def handle_info(:tick, socket) do
-    {:noreply, update(socket, :date, fn (_) -> ldate() end)}
+    {:noreply, update(socket, :date, fn _ -> ldate() end)}
   end
 
+  # ----- counter 
+
   def handle_event("inc", _, socket) do
-    {:noreply, update(socket, :val, &(&1 + 1))}
+    {:noreply, update(socket, :count, &(&1 + 1))}
   end
 
   def handle_event("dec", _, socket) do
-    {:noreply, update(socket, :val, &(&1 - 1))}
+    {:noreply, update(socket, :count, &(&1 - 1))}
   end
 
-  def handle_event("validate", arg, socket) do
-    eval = fn(_) -> String.length(arg["q"]) > 0 end
-    {:noreply, update(socket, :changed, eval)}
+  # ----- text input
+  
+  def handle_event("update_string", arg, socket) do
+    slen = String.length(arg["str"])
+    ustr = if slen > 0, do: "length #{slen}", else: ""
+    ufun = fn _ -> ustr end
+    {:noreply, update(socket, :update_str, ufun)}
   end
 
-  def handle_event("save", arg, socket) do
-    {:noreply, socket}
+  # ----- url validation
+
+  def handle_event("validate_url", arg, socket) do
+    {_, boolean_result, _} = validate_url(arg["url"])
+    vfun = fn _ -> boolean_result end
+    {:noreply, update(socket, :valid_url, vfun)}
   end
+
+  # def handle_event("save_url", arg, socket) do
+  #   {:noreply, socket}
+  # end
+
+  # ----- misc
 
   defp ldate do
     Timex.now("US/Pacific")
     |> Timex.format!("%d %b %H:%M", :strftime)
+  end
+
+  defp validate_url(str) do
+    uri = URI.parse(str)
+
+    IO.inspect(str)
+    IO.inspect uri
+
+    case uri do
+      %URI{scheme: nil} -> {:error, false, uri}
+      %URI{host: nil}   -> {:error, false, uri}
+      %URI{path: nil}   -> {:error, false, uri}
+      uri -> {:ok, true, uri}
+    end
   end
 end
