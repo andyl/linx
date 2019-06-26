@@ -16,9 +16,8 @@ Right now it is <%= @date %>
 
 <h3>LiveView Form</h3>
 
-<form phx-change="suggest" phx-submit="search">
-  <input type="text" name="q" value="<%= @query %>" 
-         placeholder="URL..." />
-         <%= if @changed, do: "changed" %>
+<form phx-change="validate" phx-submit="save">
+  <input type="text" name="q" value="<%= @query %>" placeholder="URL..." />
   </input>
+  <%= if @changed, do: "changed" %>
 </form>

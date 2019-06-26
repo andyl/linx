@@ -19,7 +19,6 @@
           <%= hdr_link(@conn, "URLS", "/urls") %>
           <%= hdr_link(@conn, "LOGS", "/logs") %>
           <%= hdr_link(@conn, "STATS", "/stats") %>
-          <%= hdr_link(@conn, "COUNT", "/count") %>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
           <li class="text-white"><%= live_render(@conn, PurlexWeb.TimeStampLcl) %></li>
@@ -34,6 +33,13 @@
         <p class="alert alert-danger" role="alert"><%= error_msg %></p>
       <% end %>
       <%= render @view_module, @view_template, assigns %>
+      <div style='margin-top: 40px;'>
+        <hr>
+        <small>
+        <ul class="nav justify-content-center">
+          <%= ftr_link(@conn, "Demo", "/demo") %>
+        </ul>
+        </small>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
