@@ -44,13 +44,14 @@ defmodule Purlex.MixProject do
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:timex, "~> 3.1"},
+      {:ecto, "~> 3.1.7"},
       # ----- persistence
       {:persistent_ets, "~> 0.1.0"},
       # ----- monitoring and tracing
       {:observer_cli, "~> 1.5"},
       # ----- development and test
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:mix_test_watch, "~> 0.8", only: :dev}
+      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false}
     ]
   end
 end

@@ -1,26 +1,62 @@
 defmodule PurlexWeb.LinkForm do
   use Phoenix.LiveView
-  use Timex
+  alias PurlexWeb.UrlSchema
+  import Phoenix.HTML.Form
+  import PurlexWeb.ErrorHelpers
+
+
 
   def mount(_session, socket) do
-    {:ok, assign(socket, %{})}
+    {:ok, assign(socket, %{changeset: %UrlSchema{}})}
   end
 
   def render(assigns) do
     ~L"""
-    <form phx-change="update_text">
-      <input type="text" name="input_url" placeholder="Enter URL..." /></input> <br/>
-      <input type="text" name="alias" placeholder="Enter Alias (optional)..." /></input> 
+    <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
+    
+      <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+          Something went wrong! Please check the errors below.
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= text_input f, :url, placeholder: "URL", class: "form-control" %>
+        <%= error_tag f, :url %>
+      </div>
+      <div class="form-group">
+        <%= text_input f, :alt, placeholder: "Alias", class: "form-control" %>
+        <%= error_tag f, :alt %>
+      </div>
+      <%= submit "Save", class: "btn btn-primary", phx_disable_with: "Saving..." %>
     </form>
     """
   end
 
-  # def handle_info(:tick, socket) do
-  #   {:noreply, update(socket, :date, fn (_) -> ldate() end)}
-  # end
+  # def handle_event("validate", %{"user" => params}, socket) do
+  #   IO.puts "===================================================="
+  #   IO.puts "===================================================="
+  #   changeset =
+  #     %User{}
+  #     |> Accounts.change_user(params)
+  #     |> Map.put(:action, :insert)
   #
-  # defp ldate do
-  #   Timex.now("US/Pacific")
-  #   |> Timex.format!("%d %b %H:%M", :strftime)
+  #   {:noreply, assign(socket, changeset: changeset)}
   # end
+
+  # def handle_event("save", %{"user" => user_params}, socket) do
+  #   IO.puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  #   IO.puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  #   case Accounts.create_user(user_params) do
+  #     {:ok, user} ->
+  #       {:stop,
+  #        socket
+  #        |> put_flash(:info, "User created successfully.")
+  #        |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
+  #
+  #     {:error, %Ecto.Changeset{} = changeset} ->
+  #       {:noreply, assign(socket, changeset: changeset)}
+  #   end
+  # end
+
 end
