@@ -1,24 +1,5 @@
 # Purlex Devlog
 
-Overview
-- Personal Link Shortener App
-- Anonymous creation of digest
-- Use persistent_ets as the datastore
-
-Validations
-- target page must exist
-
-Routes
-- get /                - intro page with forms
-- get /:key            - redirect to :val or show error form
-- get /stats/:key      - show stats for :key
-- get /create?url=:url - show key
-- get /urls            - list of URLs
-- get /log             - hit log (live view log update)
-- get /stats           - stat page (live view table filter/sort)
-
-Return types: HTML or JSON
-
 ## 2019-06-11 TUE
 
 - [x] Regen the app

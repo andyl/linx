@@ -6,12 +6,18 @@
 <div class="row">
   <div class="col-md-6">
     <h2>About</h2>
-    Text goes here<br/>
-    List of links
+    <p></p>
+    Your personal link shortener:
+    <ul>
+      <li>create a short URL</li>
+      <li>add a custom alias</li>
+      <li>profit</li>
+    </ul>
   </div>
 
   <div class="col-md-6">
-    <h2>Link Shortener</h2>
-    Form: enter your text
+    <h2>Create Short URL!</h2>
+    <p></p>
+    <%= live_render(@conn, PurlexWeb.LinkForm) %>
   </div>
 </div>
