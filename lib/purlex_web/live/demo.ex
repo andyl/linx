@@ -59,8 +59,8 @@ defmodule PurlexWeb.Demo do
   defp validate_url(str) do
     uri = URI.parse(str)
 
-    IO.inspect(str)
-    IO.inspect uri
+    # IO.inspect(str)
+    # IO.inspect uri
 
     case uri do
       %URI{scheme: nil} -> {:error, false, uri}

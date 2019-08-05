@@ -34,13 +34,22 @@
 - [x] Work with HTML or JSON pages
 - [x] Add LiveView
 
+## 2019-06-23 SUN
+
+- [x] Add UrlForm
+- [ ] Upgrade to persistent_ets 0.2.0
+
 ## TBD
 
-- [ ] Build out data input page
+- [ ] Test UrlForm errors
+- [ ] Display ShortUrl
+- [ ] Display AliasUrl
+- [ ] Get save working
+- [ ] Get /:key redirect working
 
-- [ ] Create stats/index with mocked-up data
-- [ ] Create stats/show with mocked-up data
+- [ ] Create stats/index 
+- [ ] Create stats/show 
 
-- [ ] Elixir Release
+- [ ] Elixir Release (no distillery)
 - [ ] Docker Release
 

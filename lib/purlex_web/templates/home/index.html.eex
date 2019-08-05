@@ -18,6 +18,6 @@
   <div class="col-md-6">
     <h2>Create Short URL!</h2>
     <p></p>
-    <%# live_render(@conn, PurlexWeb.LinkForm) %>
+    <%= live_render(@conn, PurlexWeb.LinkForm) %>
   </div>
 </div>

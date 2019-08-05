@@ -54,6 +54,19 @@ defmodule Purelex.Data.GenStoreTest do
     end
   end
 
+  describe "#has_key?" do
+    test "returns false if key does not exist", ctx do
+      GenStore.start(ctx.tablekey, ctx.filepath)
+      refute GenStore.has_key?(ctx.tablekey, "randomkey")
+    end
+
+    test "returns true if key exists", ctx do
+      assert GenStore.start(ctx.tablekey, ctx.filepath)
+      assert GenStore.insert(ctx.tablekey, {"asdf", 1})
+      assert GenStore.has_key?(ctx.tablekey, "asdf")
+    end
+  end
+
   describe "#stop" do
     test "cleans up the ETS tablekey and filepath", ctx do
       assert GenStore.start(ctx.tablekey, ctx.filepath)

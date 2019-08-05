@@ -38,6 +38,11 @@ defmodule Purlex.Data.GenStore do
     :ets.lookup(tablekey, datakey)
   end
 
+  # @doc "Check for existence of key in data-store".
+  def has_key?(tablekey, datakey) do
+    :ets.lookup(tablekey, datakey) != []
+  end
+
   @doc "Return true if a table has been started."
   def started?(tablekey) do
     :ets.whereis(tablekey) != :undefined

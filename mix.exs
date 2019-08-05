@@ -40,13 +40,13 @@ defmodule Purlex.MixProject do
       # ----- phoenix view helpers
       {:phoenix_active_link, "~> 0.2.1"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:phoenix_ecto, "~> 4.0.0"},
       # ----- util
       {:jason, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:timex, "~> 3.1"},
-      {:ecto, "~> 3.1.7"},
       # ----- persistence
-      {:persistent_ets, "~> 0.1.0"},
+      {:persistent_ets, "~> 0.2.0"},
       # ----- monitoring and tracing
       {:observer_cli, "~> 1.5"},
       # ----- development and test
