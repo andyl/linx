@@ -4,8 +4,14 @@ defmodule PurlexWeb.LinkForm do
   import Phoenix.HTML.Form
   import PurlexWeb.ErrorHelpers
 
-  def mount(_session, socket) do
-    {:ok, assign(socket, %{changeset: UrlSchema.new_changeset()})}
+  def mount(session, socket) do
+    opts = %{
+      changeset: UrlSchema.new_changeset(),
+      url_host: session.url_host, 
+      url_base: "",
+      url_hash: ""
+    }
+    {:ok, assign(socket, opts)}
   end
 
   def render(assigns) do
@@ -22,16 +28,22 @@ defmodule PurlexWeb.LinkForm do
         <%= text_input f, :url, placeholder: "URL", class: "form-control" %>
         <%= error_tag f, :url %>
       </div>
-      <div class="form-group">
-        <%= text_input f, :alt, placeholder: "Alias", class: "form-control" %>
-        <%= error_tag f, :alt %>
-      </div>
+
       <%= if @changeset.valid? do %>
-        <%= submit "Save", class: "btn btn-primary", phx_disable_with: "Saving..." %>
+        <%= submit "Create", class: "btn btn-primary", phx_disable_with: "Saving..." %>
       <% else %>
-        <button style='pointer-events: none;' class="btn btn-primary disabled">Save</button>
+        <button style='pointer-events: none;' class="btn btn-primary disabled">Create</button>
       <% end %>
     </form>
+
+    <%= if @url_base != "" do %>
+      <p style='margin-top: 40px;'>
+      the short url<br/>
+      <code><%= @url_host %>/<%= @url_hash %></code><br/>
+      redirects to<br/>
+      <code><%= @url_base %></code>
+      </p>
+    <% end %>
     """
   end
 
@@ -39,43 +51,21 @@ defmodule PurlexWeb.LinkForm do
     changeset = 
       %UrlSchema{}
       |> UrlSchema.changeset(opts)
-    {:noreply, assign(socket, changeset: changeset)}
+    opts = %{
+      changeset: changeset,
+      url_base: "",
+      url_hash: ""
+    }
+    {:noreply, assign(socket, opts)}
   end
 
-  def handle_event("save", var2, socket) do
-    # IO.puts "===================================================="
-    # IO.inspect var2
-    # IO.puts "===================================================="
-    # IO.inspect socket
-    # IO.puts "===================================================="
-
-    {:noreply, socket}
+  def handle_event("save", %{"url_schema" => params}, socket) do
+    url_base = params["url"]
+    url_hash = Purlex.Data.Link.create!(url_base)
+    opts = %{
+      url_base: url_base,
+      url_hash: url_hash
+    }
+    {:noreply, assign(socket, opts)}
   end
-
-  # def handle_event("validate", %{"user" => params}, socket) do
-  #   io.puts "===================================================="
-  #   io.puts "===================================================="
-  #   changeset =
-  #     %User{}
-  #     |> Accounts.change_user(params)
-  #     |> Map.put(:action, :insert)
-  #
-  #   {:noreply, assign(socket, changeset: changeset)}
-  # end
-
-  # def handle_event("save", %{"user" => user_params}, socket) do
-  #   IO.puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  #   IO.puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  #   case Accounts.create_user(user_params) do
-  #     {:ok, user} ->
-  #       {:stop,
-  #        socket
-  #        |> put_flash(:info, "User created successfully.")
-  #        |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
-  #
-  #     {:error, %Ecto.Changeset{} = changeset} ->
-  #       {:noreply, assign(socket, changeset: changeset)}
-  #   end
-  # end
-
 end

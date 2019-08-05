@@ -37,15 +37,17 @@
 ## 2019-06-23 SUN
 
 - [x] Add UrlForm
-- [ ] Upgrade to persistent_ets 0.2.0
+- [x] Upgrade to persistent_ets 0.2.0
+- [x] Test UrlForm errors
 
-## TBD
+## 2019-06-23 SUN
 
-- [ ] Test UrlForm errors
+- [x] Add Create Idempotency
 - [ ] Display ShortUrl
-- [ ] Display AliasUrl
 - [ ] Get save working
 - [ ] Get /:key redirect working
+
+## TBD
 
 - [ ] Create stats/index 
 - [ ] Create stats/show 

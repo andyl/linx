@@ -2,7 +2,9 @@ defmodule PurlexWeb.HomeController do
   use PurlexWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    conn
+    |> assign(:url_host, Purlex.Url.conn_host(conn))
+    |> render("index.html")
   end
 
   def urls(conn, _params) do

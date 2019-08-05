@@ -1,23 +1,17 @@
 <div class="jumbotron text-center" style='padding: 1em;'>
-  <h1><%= gettext "Welcome to %{name}!", name: "Purlex" %></h1>
-  <p>Your personal link shortener</p>
+  <h3>Purlex: A simple link shortener</h3>
 </div>
 
 <div class="row">
   <div class="col-md-6">
-    <h2>About</h2>
+    <h2>Create</h2>
     <p></p>
-    Your Personal link shortener:
-    <ul>
-      <li>create a short URL</li>
-      <li>add a custom alias</li>
-      <li>profit</li>
-    </ul>
+    <%= live_render(@conn, PurlexWeb.LinkForm, session: %{url_host: @url_host}) %>
   </div>
 
   <div class="col-md-6">
-    <h2>Create Short URL!</h2>
+    <h2>Lookup</h2>
     <p></p>
-    <%= live_render(@conn, PurlexWeb.LinkForm) %>
+    TBD
   </div>
 </div>
