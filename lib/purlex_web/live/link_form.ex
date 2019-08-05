@@ -38,9 +38,9 @@ defmodule PurlexWeb.LinkForm do
       <code><%= @url_base %></code>
       </p>
       <p>
+      try it...<br/>
       <a class="btn btn-primary" target="_blank" href="<%= @url_host %>/<%= @url_hash %>">
-      This button links to <%= @url_host %>/<%= @url_hash %><br/>
-      Try it!
+      <%= @url_host %>/<%= @url_hash %>
       </a>
     <% end %>
     """
