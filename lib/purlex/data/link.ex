@@ -50,8 +50,12 @@ defmodule Purlex.Data.Link do
   Lookuvp the url_hash, update the use_count, return link payload.
   """
   def lookup(url_hash, ctx \\ @ctx) do
-    get_payload(url_hash, ctx)
-    |> update_payload(ctx)
+    if has_key?(url_hash, ctx) do
+      get_payload(url_hash, ctx)
+      |> update_payload(ctx)
+    else
+      nil
+    end
   end
 
   defp create_payload(url_base) do

@@ -43,15 +43,17 @@
 ## 2019-06-23 SUN
 
 - [x] Add Create Idempotency
-- [ ] Display ShortUrl
-- [ ] Get save working
-- [ ] Get /:key redirect working
+- [x] Display ShortUrl
+- [x] Get save working
+- [x] Get /:key redirect working
 
 ## TBD
 
-- [ ] Create stats/index 
-- [ ] Create stats/show 
-
 - [ ] Elixir Release (no distillery)
 - [ ] Docker Release
+
+- [ ] Create stats/index 
+- [ ] Create stats/show 
+- [ ] Add aliasing
+
 

@@ -18,4 +18,18 @@ defmodule PurlexWeb.HomeController do
   def stats(conn, _params) do
     render(conn, "stats.html")
   end
+
+  def key_direct(conn, params) do
+    key = params["key"]
+    url = Purlex.Data.Link.lookup(key)
+    if url != nil do
+      conn
+      |> redirect(external: url.url_base)
+    else
+      conn
+      |> put_flash(:error, "Short-URL key (#{key}) not found.")
+      |> assign(:url_host, Purlex.Url.conn_host(conn))
+      |> redirect(to: "/")
+    end
+  end
 end

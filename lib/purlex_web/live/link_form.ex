@@ -18,21 +18,15 @@ defmodule PurlexWeb.LinkForm do
     ~L"""
     <%= f = form_for @changeset, "#", [phx_change: :validate, phx_submit: :save] %>
     
-      <%= if @changeset.action do %>
-        <div class="alert alert-danger">
-          Something went wrong! Please check the errors below.
-        </div>
-      <% end %>
-
       <div class="form-group">
-        <%= text_input f, :url, placeholder: "URL", class: "form-control" %>
+        <%= text_input f, :url, placeholder: "Enter your URL here...", class: "form-control" %>
         <%= error_tag f, :url %>
       </div>
 
       <%= if @changeset.valid? do %>
-        <%= submit "Create", class: "btn btn-primary", phx_disable_with: "Saving..." %>
+        <%= submit "Create a Short-URL", class: "btn btn-primary" %>
       <% else %>
-        <button style='pointer-events: none;' class="btn btn-primary disabled">Create</button>
+        <button style='pointer-events: none;' class="btn btn-primary disabled">Create a Short-URL</button>
       <% end %>
     </form>
 
@@ -43,6 +37,11 @@ defmodule PurlexWeb.LinkForm do
       redirects to<br/>
       <code><%= @url_base %></code>
       </p>
+      <p>
+      <a class="btn btn-primary" target="_blank" href="<%= @url_host %>/<%= @url_hash %>">
+      This button links to <%= @url_host %>/<%= @url_hash %><br/>
+      Try it!
+      </a>
     <% end %>
     """
   end

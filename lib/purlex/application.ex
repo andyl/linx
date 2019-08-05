@@ -14,10 +14,6 @@ defmodule Purlex.Application do
       # {Purlex.Worker, arg},
     ]
     
-    # Start the datastores...
-    # IO.inspect Purlex.Data.LogStore.start()
-    # Purlex.Data.LinkStore.start()
-
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Purlex.Supervisor]
