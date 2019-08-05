@@ -51,6 +51,8 @@
 
 - [ ] Elixir Release (no distillery)
 - [ ] Docker Release
+- [ ] Publish to DockerHub
+- [ ] Public access on BAMRU.tech
 
 - [ ] Create stats/index 
 - [ ] Create stats/show 
