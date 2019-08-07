@@ -40,12 +40,17 @@
 - [x] Upgrade to persistent_ets 0.2.0
 - [x] Test UrlForm errors
 
-## 2019-06-23 SUN
+## 2019-08-05 MON
 
 - [x] Add Create Idempotency
 - [x] Display ShortUrl
 - [x] Get save working
 - [x] Get /:key redirect working
+- [x] Add LiveView
+
+## 2019-08-05 MON
+
+- [ ] Add chartkick demo
 
 ## TBD
 
