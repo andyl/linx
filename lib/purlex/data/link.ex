@@ -3,7 +3,7 @@ defmodule Purlex.Data.Link do
 
   defstruct [:url_base, :url_hash, :url_host, :ts_creation, :ts_last_use, :use_count]
 
-  alias Purlex.Data.GenStore
+  alias Purlex.Data.Pets
   alias Purlex.Data.Link
 
   @moduledoc """
@@ -86,25 +86,25 @@ defmodule Purlex.Data.Link do
 
   defp has_key?(datakey, ctx) do
     start_data_store(ctx)
-    GenStore.has_key?(ctx.tablekey, datakey)
+    Pets.has_key?(ctx.tablekey, datakey)
   end
 
   defp start_data_store(ctx) do
-    unless GenStore.started?(ctx.tablekey),
-      do: GenStore.start(ctx.tablekey, ctx.filepath)
+    unless Pets.started?(ctx.tablekey),
+      do: Pets.start(ctx.tablekey, ctx.filepath)
   end
 
   defp get_payload(datakey, ctx) do
     start_data_store(ctx)
 
-    GenStore.lookup(ctx.tablekey, datakey)
+    Pets.lookup(ctx.tablekey, datakey)
     |> List.first()
     |> elem(1)
   end
 
   defp save_payload(payload, ctx) do
     start_data_store(ctx)
-    GenStore.insert(ctx.tablekey, {payload.url_hash, payload})
+    Pets.insert(ctx.tablekey, {payload.url_hash, payload})
     payload.url_hash
   end
 
@@ -114,7 +114,7 @@ defmodule Purlex.Data.Link do
            count <- payload.use_count + 1,
            do: %Link{payload | ts_last_use: date, use_count: count}
 
-    GenStore.insert(ctx.tablekey, {update.url_hash, update})
+    Pets.insert(ctx.tablekey, {update.url_hash, update})
     update
   end
 end

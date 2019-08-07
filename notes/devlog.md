@@ -17,7 +17,7 @@
 ## 2019-06-20 THU
 
 - [x] Update Vim environment
-- [x] Create test for GenStore module
+- [x] Create test for Pets module
 
 ## 2019-06-21 FRI
 

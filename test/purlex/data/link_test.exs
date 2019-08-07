@@ -2,10 +2,10 @@ defmodule Purlex.Data.LinkTest do
   use ExUnit.Case, async: true
 
   alias Purlex.Data.Link
-  alias Purlex.Data.GenStore
+  alias Purlex.Data.Pets
 
   setup do
-    GenStore.test_context()
+    Pets.test_context()
   end
 
   describe "#struct" do
@@ -45,5 +45,5 @@ defmodule Purlex.Data.LinkTest do
   #   end
   # end
 
-  defp cleanup(ctx), do: GenStore.stop(ctx.tablekey, ctx.filepath)
+  defp cleanup(ctx), do: Pets.stop(ctx.tablekey, ctx.filepath)
 end

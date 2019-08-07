@@ -3,7 +3,7 @@ defmodule Purlex.Data.Log do
 
   defstruct [:base_url, :hash_url, :ts_used_at, :use_count]
 
-  alias Purlex.Data.GenStore
+  alias Purlex.Data.Pets
   alias Purlex.Data.Log
 
   @moduledoc """
@@ -31,7 +31,7 @@ defmodule Purlex.Data.Log do
       ts_used_at: link.ts_used_at,
       use_count: link.use_count
     }
-    GenStore.insert(link.hash_url, payload)
+    Pets.insert(link.hash_url, payload)
   end
 
   @doc """
@@ -39,11 +39,11 @@ defmodule Purlex.Data.Log do
   """
   def lookup(hash_url, ctx \\ @ctx) do
     start_data_store(ctx)
-    GenStore.lookup(ctx.tablekey, hash_url)
+    Pets.lookup(ctx.tablekey, hash_url)
   end
 
   defp start_data_store(ctx) do
-    unless GenStore.started?(ctx.tablekey),
-      do: GenStore.start(ctx.tablekey, ctx.filepath, [:bag])
+    unless Pets.started?(ctx.tablekey),
+      do: Pets.start(ctx.tablekey, ctx.filepath, [:bag])
   end
 end
