@@ -1,7 +1,7 @@
 defmodule Purlex.Data.Log do
   @ctx %{filepath: "/tmp/logstore.dat", tablekey: :logs}
 
-  defstruct [:base_url, :hash_url, :ts_used_at, :use_count]
+  defstruct [:url_hash, :url_base, :url_host, :ts_used_at, :use_count]
 
   alias Purlex.Data.Log
 
@@ -11,8 +11,8 @@ defmodule Purlex.Data.Log do
   We record a single event payload every time a link is accessed.
 
   Payload elements:
-  - base_url - the long url
-  - hash_url - the short url
+  - url_base - the long url
+  - url_hash - the short url
   - ts_used_at - the time that the link is used
   - use_count - number of times that the link is used
   """
@@ -25,12 +25,13 @@ defmodule Purlex.Data.Log do
   def record(link, ctx \\ @ctx) do
     start_data_store(ctx)
     payload = %Log{
-      base_url: link.base_url,
-      hash_url: link.hash_url,
-      ts_used_at: link.ts_used_at,
+      url_hash: link.url_hash,
+      url_base: link.url_base,
+      url_host: link.url_host,
+      ts_used_at: DateTime.utc_now(),
       use_count: link.use_count
     }
-    Pets.insert(link.hash_url, payload)
+    Pets.insert(ctx.tablekey, {payload.ts_used_at, payload})
   end
 
   @doc """
@@ -41,8 +42,16 @@ defmodule Purlex.Data.Log do
     Pets.lookup(ctx.tablekey, hash_url)
   end
 
+  @doc """
+  Return all records.
+  """
+  def all(ctx \\ @ctx) do
+    start_data_store(ctx)
+    Pets.all(ctx.tablekey)
+  end
+
   defp start_data_store(ctx) do
     unless Pets.started?(ctx.tablekey),
-      do: Pets.start(ctx.tablekey, ctx.filepath, [:bag])
+      do: Pets.start(ctx.tablekey, ctx.filepath, [:ordered_set])
   end
 end

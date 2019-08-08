@@ -1,5 +1,29 @@
 <h3>URLS</h3>
-
-<i class='fas fa-circle'></i>
-
+<p></p>
+<table class="table table-sm">
+<%= for link <- @all do %>
+  <tr>
+    <td>
+      <a href="/<%= link.url_hash %>" target="_blank">
+        <%= link.url_hash %>
+      </a>
+    </td>
+    <td>
+      <%= link.url_host %>
+    </td>
+    <td>
+      <%= String.slice(link.url_base, 0..30) %>
+    </td>
+    <td>
+      <%= link.use_count %>
+    </td>
+    <td>
+      <%= DateTime.to_string(link.ts_creation) |> String.slice(0..15) %>
+    </td>
+    <td>
+      <%= DateTime.to_string(link.ts_last_use) |> String.slice(0..15) %>
+    </td>
+  </tr>
+<% end %>
+</table>
 

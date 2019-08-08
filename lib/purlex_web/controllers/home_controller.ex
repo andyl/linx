@@ -8,11 +8,25 @@ defmodule PurlexWeb.HomeController do
   end
 
   def urls(conn, _params) do
-    render(conn, "urls.html")
+    all = 
+      Purlex.Data.Link.all()
+      |> Enum.map(&(elem(&1, 1)))
+      |> Enum.sort(&(&1.url_host < &2.url_host))
+
+    conn
+    |> assign(:all, all)
+    |> render("urls.html")
   end
 
   def logs(conn, _params) do
-    render(conn, "logs.html")
+    all = 
+      Purlex.Data.Log.all()
+      |> Enum.map(&(elem(&1, 1)))
+      # |> Enum.sort(&(&1.ts_used_at > &2.ts_used_at))
+
+    conn
+    |> assign(:all, all)
+    |> render("logs.html")
   end
 
   def stats(conn, _params) do
@@ -22,7 +36,9 @@ defmodule PurlexWeb.HomeController do
   def key_direct(conn, params) do
     key = params["key"]
     url = Purlex.Data.Link.lookup(key)
+
     if url != nil do
+      Purlex.Data.Log.record(url)
       conn
       |> redirect(external: url.url_base)
     else

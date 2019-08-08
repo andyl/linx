@@ -44,5 +44,14 @@ defmodule Purlex.Data.LinkTest do
     end
   end
 
+  describe "#all" do
+    test "returns a payload", ctx do
+      address_base = "http://bong.com/qwer"
+      assert address_hash = Link.create!(address_base, ctx)
+      assert Link.all(ctx)
+      cleanup(ctx)
+    end
+  end
+
   defp cleanup(ctx), do: Pets.stop(ctx.tablekey, ctx.filepath)
 end

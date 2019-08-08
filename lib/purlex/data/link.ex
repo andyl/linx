@@ -46,7 +46,7 @@ defmodule Purlex.Data.Link do
   end
 
   @doc """
-  Lookuvp the url_hash, update the use_count, return link payload.
+  Lookup the url_hash, update the use_count, return link payload.
   """
   def lookup(url_hash, ctx \\ @ctx) do
     if has_key?(url_hash, ctx) do
@@ -55,6 +55,14 @@ defmodule Purlex.Data.Link do
     else
       nil
     end
+  end
+
+  @doc """
+  Return all records.
+  """
+  def all(ctx \\ @ctx) do
+    start_data_store(ctx)
+    Pets.all(ctx.tablekey)
   end
 
   defp create_payload(url_base) do

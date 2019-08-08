@@ -18,7 +18,7 @@
         <ul class="navbar-nav mr-auto">
           <%= hdr_link(@conn, "URLS", "/urls") %>
           <%= hdr_link(@conn, "LOGS", "/logs") %>
-          <%= hdr_link(@conn, "STATS", "/stats") %>
+          <%# hdr_link(@conn, "STATS", "/stats") %>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
           <li class="text-white"><%= live_render(@conn, PurlexWeb.TimeLcl) %></li>

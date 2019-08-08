@@ -48,11 +48,18 @@
 - [x] Get /:key redirect working
 - [x] Add LiveView
 
-## 2019-08-05 MON
+## 2019-08-06 TUE
 
-- [ ] Add chartkick demo
+- [x] Add chartkick demo
+
+## 2019-08-08 THU
+
+- [x] Add URL page
+- [x] Add Log page
 
 ## TBD
+
+- [ ] Fix sorting on /urls and /logs
 
 - [ ] Elixir Release (no distillery)
 - [ ] Docker Release
