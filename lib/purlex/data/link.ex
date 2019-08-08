@@ -3,7 +3,6 @@ defmodule Purlex.Data.Link do
 
   defstruct [:url_base, :url_hash, :url_host, :ts_creation, :ts_last_use, :use_count]
 
-  alias Purlex.Data.Pets
   alias Purlex.Data.Link
 
   @moduledoc """

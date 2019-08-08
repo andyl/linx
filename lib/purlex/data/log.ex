@@ -3,7 +3,6 @@ defmodule Purlex.Data.Log do
 
   defstruct [:base_url, :hash_url, :ts_used_at, :use_count]
 
-  alias Purlex.Data.Pets
   alias Purlex.Data.Log
 
   @moduledoc """

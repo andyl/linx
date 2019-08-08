@@ -46,7 +46,8 @@ defmodule Purlex.MixProject do
       {:gettext, "~> 0.11"},
       {:timex, "~> 3.1"},
       # ----- persistence
-      {:persistent_ets, "~> 0.2.0"},
+      # {:pets, path: "/home/aleak/src/pets"},
+      {:pets, github: "andyl/pets"},
       # ----- monitoring and tracing
       {:observer_cli, "~> 1.5"},
       # ----- development and test
