@@ -1,5 +1,5 @@
 defmodule Purlex.Data.LogTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
 
   alias Purlex.Data.Log
 

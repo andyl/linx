@@ -1,10 +1,11 @@
 defmodule Purlex.Data.LinkTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
 
   alias Purlex.Data.Link
 
   setup do
-    Pets.test_context()
+    Link.cleanup()
+    :ok
   end
 
   describe "#struct" do
@@ -14,44 +15,38 @@ defmodule Purlex.Data.LinkTest do
   end
 
   describe "#create!" do
-    test "returns a short_url", ctx do
-      assert address_hash = Link.create!("http://bing.com/asdf", ctx)
+    test "returns a short_url" do
+      assert address_hash = Link.create!("http://bing.com/asdf")
       assert address_hash == "8IZr1b"
-      cleanup(ctx)
     end
   end
 
   describe "#lookup" do
-    test "returns a payload", ctx do
+    test "returns a payload" do
       address_base = "http://bong.com/qwer"
-      assert address_hash = Link.create!(address_base, ctx)
-      assert payload = Link.lookup(address_hash, ctx)
+      assert address_hash = Link.create!(address_base)
+      assert payload = Link.lookup(address_hash)
       assert payload.url_hash == address_hash
       assert payload.url_base == address_base
       assert payload.url_base != address_hash
-      cleanup(ctx)
     end
 
-    test "increments the use_count", ctx do
+    test "increments the use_count" do
       address_base = "http://asdf.com/xzcv"
-      assert address_hash = Link.create!(address_base, ctx)
-      assert payload = Link.lookup(address_hash, ctx)
+      assert address_hash = Link.create!(address_base)
+      assert payload = Link.lookup(address_hash)
       assert payload.ts_last_use != payload.ts_creation
       assert payload.use_count == 1
-      assert payload2 = Link.lookup(address_hash, ctx)
+      assert payload2 = Link.lookup(address_hash)
       assert payload2.use_count == 2
-      cleanup(ctx)
     end
   end
 
   describe "#all" do
-    test "returns a payload", ctx do
+    test "returns a payload" do
       address_base = "http://bong.com/qwer"
-      assert address_hash = Link.create!(address_base, ctx)
-      assert Link.all(ctx)
-      cleanup(ctx)
+      assert address_hash = Link.create!(address_base)
+      assert Link.all()
     end
   end
-
-  defp cleanup(ctx), do: Pets.stop(ctx.tablekey, ctx.filepath)
 end

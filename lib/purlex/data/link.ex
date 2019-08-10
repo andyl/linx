@@ -1,7 +1,13 @@
 defmodule Purlex.Data.Link do
-  @ctx %{filepath: "/tmp/linkstore.dat", tablekey: :links}
 
-  defstruct [:url_base, :url_hash, :url_host, :ts_creation, :ts_last_use, :use_count]
+  defstruct [
+    :url_base, 
+    :url_hash, 
+    :url_host, 
+    :ts_creation, 
+    :ts_last_use, 
+    :use_count
+  ]
 
   alias Purlex.Data.Link
 
@@ -25,9 +31,9 @@ defmodule Purlex.Data.Link do
   @doc """
   Create link payload, save in datastore, return the url_hash.
   """
-  def create(url_base, ctx \\ @ctx) do
+  def create(url_base) do
     if valid_url?(url_base) do
-      {:ok, create!(url_base, ctx)}
+      {:ok, create!(url_base)}
     else
       {:error, "Invalid URL"}
     end
@@ -36,22 +42,22 @@ defmodule Purlex.Data.Link do
   @doc """
   Create link payload, save in datastore, return the url_hash.
   """
-  def create!(url_base, ctx \\ @ctx) do
+  def create!(url_base) do
     payload = create_payload(url_base)
-    if has_key?(payload.url_hash, ctx) do
+    if has_key?(payload.url_hash) do
       payload.url_hash
     else
-      save_payload(payload, ctx)
+      save_payload(payload)
     end
   end
 
   @doc """
   Lookup the url_hash, update the use_count, return link payload.
   """
-  def lookup(url_hash, ctx \\ @ctx) do
-    if has_key?(url_hash, ctx) do
-      get_payload(url_hash, ctx)
-      |> update_payload(ctx)
+  def lookup(url_hash) do
+    if has_key?(url_hash) do
+      get_payload(url_hash)
+      |> update_payload()
     else
       nil
     end
@@ -60,10 +66,17 @@ defmodule Purlex.Data.Link do
   @doc """
   Return all records.
   """
-  def all(ctx \\ @ctx) do
-    start_data_store(ctx)
-    Pets.all(ctx.tablekey)
+  def all do
+    sig()
+    |> Pets.all()
   end
+
+  def cleanup do
+    sig()
+    |> Pets.cleanup()
+  end
+
+  # ---------------
 
   defp create_payload(url_base) do
     key = hash(url_base)
@@ -91,37 +104,41 @@ defmodule Purlex.Data.Link do
     |> String.slice(1..6)
   end
 
-  defp has_key?(datakey, ctx) do
-    start_data_store(ctx)
-    Pets.has_key?(ctx.tablekey, datakey)
+  defp has_key?(datakey) do
+    sig()
+    |> Pets.has_key?(datakey)
   end
 
-  defp start_data_store(ctx) do
-    unless Pets.started?(ctx.tablekey),
-      do: Pets.start(ctx.tablekey, ctx.filepath)
-  end
-
-  defp get_payload(datakey, ctx) do
-    start_data_store(ctx)
-
-    Pets.lookup(ctx.tablekey, datakey)
+  defp get_payload(datakey) do
+    sig()
+    |> Pets.lookup(datakey)
     |> List.first()
     |> elem(1)
   end
 
-  defp save_payload(payload, ctx) do
-    start_data_store(ctx)
-    Pets.insert(ctx.tablekey, {payload.url_hash, payload})
+  defp save_payload(payload) do
+    sig()
+    |> Pets.insert({payload.url_hash, payload})
     payload.url_hash
   end
 
-  defp update_payload(payload, ctx) do
+  defp update_payload(payload) do
     update =
       with date <- DateTime.utc_now(),
            count <- payload.use_count + 1,
            do: %Link{payload | ts_last_use: date, use_count: count}
 
-    Pets.insert(ctx.tablekey, {update.url_hash, update})
+    sig()
+    |> Pets.insert({update.url_hash, update})
     update
+  end
+
+  @env Mix.env()
+  defp sig do
+    case @env do
+      :dev  -> %{filepath: "/tmp/link_dev.dat", tablekey: :link_dev}
+      :test -> %{filepath: "/tmp/link_test.dat", tablekey: :link_test}
+      :prod -> %{filepath: "/tmp/link_prod.dat", tablekey: :link_prod}
+    end
   end
 end
