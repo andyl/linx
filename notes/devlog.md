@@ -1,25 +1,25 @@
 # Purlex Devlog
 
-## 2019-06-11 TUE
+## 2019 Jun 11 Tue
 
 - [x] Regen the app
 - [x] Change name of Account object
 - [x] Cleanup the HTML
 
-## 2019-06-12 WED
+## 2019 Jun 12 Wed
 
 - [x] Create an API for the storage object
 
-## 2019-06-13 THU
+## 2019 Jun 13 Thu
 
 - [x] Launch the storage objects in a genserver
 
-## 2019-06-20 THU
+## 2019 Jun 20 Thu
 
 - [x] Update Vim environment
 - [x] Create test for Pets module
 
-## 2019-06-21 FRI
+## 2019 Jun 21 Fri
 
 - [x] Create the link module
 - [x] Create the log module
@@ -28,19 +28,19 @@
 - [x] Make a nav header (Home | URLs | Log | Stats)
 - [x] Build out placeholder pages
 
-## 2019-06-22 SAT
+## 2019 Jun 22 Sat
 
 - [x] Conditional render active links
 - [x] Work with HTML or JSON pages
 - [x] Add LiveView
 
-## 2019-06-23 SUN
+## 2019 Jun 23 Sun
 
 - [x] Add UrlForm
 - [x] Upgrade to persistent_ets 0.2.0
 - [x] Test UrlForm errors
 
-## 2019-08-05 MON
+## 2019 Aug 05 Mon
 
 - [x] Add Create Idempotency
 - [x] Display ShortUrl
@@ -48,11 +48,11 @@
 - [x] Get /:key redirect working
 - [x] Add LiveView
 
-## 2019-08-06 TUE
+## 2019 Aug 06 Tue
 
 - [x] Add chartkick demo
 
-## 2019-08-08 THU
+## 2019 Aug 08 Thu
 
 - [x] Add URL page
 - [x] Add Log page
