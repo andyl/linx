@@ -61,7 +61,7 @@
 
 - [ ] Fix sorting on /urls and /logs
 
-- [ ] Elixir Release (no distillery)
+- [ ] Elixir Release (with distillery)
 - [ ] Docker Release
 - [ ] Publish to DockerHub
 - [ ] Public access on BAMRU.tech
