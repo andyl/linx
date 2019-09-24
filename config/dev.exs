@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :purlex, PurlexWeb.Endpoint,
+config :linkex, LinkexWeb.Endpoint,
   http: [port: 4050],
   debug_errors: true,
   code_reloader: true,
@@ -46,15 +46,15 @@ config :purlex, PurlexWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :purlex, PurlexWeb.Endpoint,
+config :linkex, LinkexWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/purlex_web/templates/.*(eex)$",
-      ~r"lib/purlex_web/templates/.*(leex)$",
-      ~r"lib/purlex_web/views/.*(ex)$",
-      ~r{lib/purlex_web/live/.*(ex)$}
+      ~r"lib/linkex_web/templates/.*(eex)$",
+      ~r"lib/linkex_web/templates/.*(leex)$",
+      ~r"lib/linkex_web/views/.*(ex)$",
+      ~r{lib/linkex_web/live/.*(ex)$}
     ]
   ]
 

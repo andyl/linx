@@ -1,4 +1,4 @@
-defmodule PurlexWeb.ChannelCase do
+defmodule LinkexWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,7 +21,7 @@ defmodule PurlexWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint PurlexWeb.Endpoint
+      @endpoint LinkexWeb.Endpoint
     end
   end
 

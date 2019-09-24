@@ -1,4 +1,4 @@
-# Purlex Devlog
+# Linkex Devlog
 
 ## 2019 Jun 11 Tue
 

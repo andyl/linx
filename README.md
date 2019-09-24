@@ -1,4 +1,4 @@
-# Purlex
+# Linkex
 
 To start your Phoenix server:
 

@@ -12,6 +12,6 @@ secret_key_base =
     You can generate one by calling: mix phx.gen.secret
     """
 
-config :purlex, PurlexWeb.Endpoint,
+config :linkex, LinkexWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "5050")],
   secret_key_base: secret_key_base

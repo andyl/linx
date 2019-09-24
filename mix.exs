@@ -1,9 +1,9 @@
-defmodule Purlex.MixProject do
+defmodule Linkex.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :purlex,
+      app: :linkex,
       version: "0.1.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Purlex.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Purlex.Application, []},
+      mod: {Linkex.Application, []},
       extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end
