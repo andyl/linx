@@ -4,6 +4,23 @@ defmodule Linkex.Application do
   @moduledoc false
 
   use Application
+  use GenServer
+
+  def init(arg) do
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    IO.inspect "LINKEX INIT"
+    IO.inspect arg
+    IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    {:ok, arg}
+  end
+
+  def start_link(args) do
+    IO.inspect "#######################################"
+    IO.inspect "LINKEX START_LINK"
+    IO.inspect args
+    IO.inspect "#######################################"
+    GenServer.start_link(__MODULE__, args)
+  end
 
   def start(_type, _args) do
     # List all child processes to be supervised
@@ -13,6 +30,11 @@ defmodule Linkex.Application do
       # Starts a worker by calling: Linkex.Worker.start_link(arg)
       # {Linkex.Worker, arg},
     ]
+
+    IO.inspect "---------------------------------------"
+    IO.inspect "STARTING LINKEX APP"
+    IO.inspect Application.get_all_env(:linkex)
+    IO.inspect "---------------------------------------"
     
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

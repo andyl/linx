@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 config :linkex, LinkexWeb.Endpoint,
   url: [host: "localhost"],
