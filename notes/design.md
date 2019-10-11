@@ -1,4 +1,4 @@
-# Linkex Design
+# Linx Design
 
 ## Overview
 

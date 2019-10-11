@@ -1,9 +1,9 @@
-defmodule Linkex.MixProject do
+defmodule Linx.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :linkex,
+      app: :linx,
       version: "0.1.0",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -15,7 +15,7 @@ defmodule Linkex.MixProject do
 
   def application do
     [
-      mod: {Linkex.Application, []},
+      mod: {Linx.Application, []},
       extra_applications: [:logger, :runtime_tools, :timex]
     ]
   end

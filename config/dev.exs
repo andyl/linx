@@ -6,7 +6,7 @@ import Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :linkex, LinkexWeb.Endpoint,
+config :linx, LinxWeb.Endpoint,
   http: [port: 4050],
   debug_errors: true,
   code_reloader: true,
@@ -46,15 +46,15 @@ config :linkex, LinkexWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :linkex, LinkexWeb.Endpoint,
+config :linx, LinxWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/linkex_web/templates/.*(eex)$",
-      ~r"lib/linkex_web/templates/.*(leex)$",
-      ~r"lib/linkex_web/views/.*(ex)$",
-      ~r{lib/linkex_web/live/.*(ex)$}
+      ~r"lib/linx_web/templates/.*(eex)$",
+      ~r"lib/linx_web/templates/.*(leex)$",
+      ~r"lib/linx_web/views/.*(ex)$",
+      ~r{lib/linx_web/live/.*(ex)$}
     ]
   ]
 

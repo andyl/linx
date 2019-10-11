@@ -1,4 +1,4 @@
-# Linkex Devlog
+# Linx Devlog
 
 ## 2019 Jun 11 Tue
 

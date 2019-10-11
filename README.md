@@ -1,6 +1,6 @@
-# Linkex
+# Linx
 
-Linkex is a simple link shortener.
+Linx is a simple link shortener.
 
 To start your Phoenix server:
 

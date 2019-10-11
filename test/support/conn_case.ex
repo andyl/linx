@@ -1,4 +1,4 @@
-defmodule LinkexWeb.ConnCase do
+defmodule LinxWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,10 +19,10 @@ defmodule LinkexWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias LinkexWeb.Router.Helpers, as: Routes
+      alias LinxWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint LinkexWeb.Endpoint
+      @endpoint LinxWeb.Endpoint
     end
   end
 
