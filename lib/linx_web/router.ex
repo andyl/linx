@@ -21,7 +21,7 @@ defmodule LinxWeb.Router do
     get "/urls",  HomeController, :urls
     get "/logs",  HomeController, :logs
     get "/stats", HomeController, :stats
-    # get "/:key",  HomeController, :key_direct
+    get "/:key",  HomeController, :key_direct
 
     live "/demo", Demo
   end

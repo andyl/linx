@@ -59,15 +59,27 @@
 
 ## TBD
 
+- [ ] Get linx working
+- [ ] Get devito working
+
+- [ ] Convert to Tailwind/AlpineJS
+- [ ] Create New UI
+
+- [ ] Convert to Ecto/Postgres
+
+- [ ] Install Kaffy
+- [ ] Install Metrics Dashboard
+
 - [ ] Fix sorting on /urls and /logs
+
+- [ ] Add admin login
+- [ ] Create stats/index 
+- [ ] Create stats/show 
+- [ ] Add aliasing
+- [ ] Use LiveView for real-time updates
 
 - [ ] Elixir Release (with distillery)
 - [ ] Docker Release
 - [ ] Publish to DockerHub
 - [ ] Public access on BAMRU.tech
-
-- [ ] Create stats/index 
-- [ ] Create stats/show 
-- [ ] Add aliasing
-
 
