@@ -4,7 +4,7 @@
 
 - Personal Link Shortener App
 - Anonymous creation of digest
-- Use persistent_ets as the datastore
+- Admin login to view stats
 
 ## Validations
 

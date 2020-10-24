@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
-    <%= live_title_tag assigns[:page_title] || "Linx", suffix: " · Phoenix Framework" %>
+    <%= live_title_tag assigns[:page_title] || "Linx", suffix: " · URL Shortener" %>
     <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
@@ -13,6 +13,7 @@
     <header class="z-30 fixed top-0 right-0 left-0 bg-white shadow px-2 sm:px-4 py-4">
       <div class="container mx-auto flex justify-between items-center">
         <a href="/" title="Linx Home Page" class="flex items-center text-xl text-gray-900">
+          <img class="mr-2" src="/images/favicon-32x32.png" height=10></img>
           Linx
         </a>
         <div class="flex items-center space-x-1">

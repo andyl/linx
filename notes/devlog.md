@@ -57,18 +57,29 @@
 - [x] Add URL page
 - [x] Add Log page
 
-## TBD
+## 2020 Oct 24 Fri
 
-- [ ] Get linx working
-- [ ] Get devito working
+- [x] Get linx working
+- [x] Get devito working
 
-- [ ] Convert to Tailwind/AlpineJS
-- [ ] Create New UI
+## 2020 Oct 25 Sat
 
+Notes:
+- used 'Fullstack Phoenix' generator
+- Tailwind / AlpineJS / Kaffy / Metrics Dashboard / Auth
+
+- [x] Convert to Tailwind/AlpineJS
+- [x] Create New UI
+- [x] Install Kaffy
+- [x] Install Metrics Dashboard
+
+- [ ] Copy Favicon
 - [ ] Convert to Ecto/Postgres
+- [ ] Get Pages working
 
-- [ ] Install Kaffy
-- [ ] Install Metrics Dashboard
+- [ ] Get Menu Working 
+
+## TBD
 
 - [ ] Fix sorting on /urls and /logs
 
