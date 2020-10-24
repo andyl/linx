@@ -1,4 +1,13 @@
-import Config
+use Mix.Config
+
+# Configure your database
+config :linx, Linx.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "linx_dev",
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -7,7 +16,7 @@ import Config
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :linx, LinxWeb.Endpoint,
-  http: [port: 4050],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -51,10 +60,8 @@ config :linx, LinxWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/linx_web/templates/.*(eex)$",
-      ~r"lib/linx_web/templates/.*(leex)$",
-      ~r"lib/linx_web/views/.*(ex)$",
-      ~r{lib/linx_web/live/.*(ex)$}
+      ~r"lib/linx_web/(live|views)/.*(ex)$",
+      ~r"lib/linx_web/templates/.*(eex)$"
     ]
   ]
 
@@ -68,4 +75,5 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :mix_test_watch, clear: true
+config :linx, Linx.Mailer,
+  adapter: Bamboo.LocalAdapter

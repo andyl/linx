@@ -1,50 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Linx</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-  </head>
-  <body style='padding-top: 70px;'>
-
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/">
-        <img src="/images/favicon-32x32.png" height=28></img>
-        Linx
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <%= hdr_link(@conn, "URLS", "/urls") %>
-          <%= hdr_link(@conn, "LOGS", "/logs") %>
-          <%# hdr_link(@conn, "STATS", "/stats") %>
-        </ul>
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-          <li class="text-white"><%= live_render(@conn, LinxWeb.TimeLcl) %></li>
-        </ul>
-      </div>
-      </nav>
-    <div class="container">
-      <%= if info_msg = get_flash(@conn, :info) do %>
-        <p class="alert alert-info" role="alert"><%= info_msg %></p>
-      <% end %>
-      <%= if error_msg = get_flash(@conn, :error) do %>
-        <p class="alert alert-danger" role="alert"><%= error_msg %></p>
-      <% end %>
-      <%= render @view_module, @view_template, assigns %>
-      <div style='margin-top: 40px;'>
-        <hr>
-        <ul class="nav justify-content-center">
-          <%# ftr_link(@conn, "Demo", "/demo") %>
-          <a href="https://github.com/andyl/linx" target="_blank">
-            <i class='fab fa-github'></i>
-          </a>
-        </ul>
-    </div>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-  </body>
-</html>
+<main role="main" class="container mx-auto mb-8 px-4 max-w-6xl">
+  <p class="alert alert-info alert-left toast" role="alert"><%= get_flash(@conn, :info) %></p>
+  <p class="alert alert-danger alert-left toast" role="alert"><%= get_flash(@conn, :error) %></p>
+  <%= @inner_content %>
+</main>
