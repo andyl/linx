@@ -4,7 +4,7 @@ defmodule Linx.MixProject do
     [
       app: :linx,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -12,8 +12,8 @@ defmodule Linx.MixProject do
       deps: deps()
     ]
   end
+  
   # Configuration for the OTP application.
-  #
   # Type `mix help compile.app` for more information.
   def application do
     [
@@ -21,41 +21,50 @@ defmodule Linx.MixProject do
       extra_applications: [:logger, :runtime_tools]
     ]
   end
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
+
   # Specifies your project dependencies.
-  #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # Absinthe for GraphQL
+      # ----- Phoenix Backend
+      {:phoenix, "~> 1.5.5"},
+      # ----- Phoenix View Helpers
+      {:phoenix_live_view, "~> 0.14.6"},
+      {:phoenix_html, "~> 2.11"},
+      {:ecto_sql, "~> 3.4"},
+      {:phoenix_ecto, "~> 4.1"},
+      # ----- Persistence
+      {:postgrex, ">= 0.0.0"},
+      # ----- GraphQL
       {:absinthe, "~> 1.5.0"},
       {:absinthe_plug, "~> 1.5.0"},
-
-      # Kaffy administration
+      # ----- Administration
       {:kaffy, "~> 0.9.0"},
-
-      # Bamboo for Emailing
+      # ----- Email Delivery
       {:bamboo, "~> 1.5"},
       {:premailex, "~> 0.3.0"},
       {:floki, ">= 0.0.0"},
-
+      # ----- Authentication
       {:guardian, "~> 2.0"},
       {:bcrypt_elixir, "~> 2.0"},
       {:phx_gen_auth, "~> 0.5", only: [:dev], runtime: false},
-      {:sobelow, "~> 0.8", only: :dev},
-      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
-      {:phoenix, "~> 1.5.5"},
-      {:phoenix_ecto, "~> 4.1"},
-      {:ecto_sql, "~> 3.4"},
-      {:postgrex, ">= 0.0.0"},
-      {:phoenix_live_view, "~> 0.14.6"},
-      {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      # ----- Monitoring and Tracing
+      {:observer_cli, "~> 1.6"},
       {:phoenix_live_dashboard, "~> 0.2"},
+      # ----- Telemetry
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
+      # ----- Development and Test
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:sobelow, "~> 0.8", only: :dev},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      # ----- Utilities
+      {:timex, "~> 3.1"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"}
