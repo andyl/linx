@@ -8,7 +8,7 @@ defmodule Linx.Application do
 
   def init(arg) do
     IO.inspect "+++++++++++++++++++++++++++++++++++++++"
-    IO.inspect "LINKEX INIT"
+    IO.inspect "LINX INIT"
     IO.inspect arg
     IO.inspect "+++++++++++++++++++++++++++++++++++++++"
     {:ok, arg}
@@ -16,7 +16,7 @@ defmodule Linx.Application do
 
   def start_link(args) do
     IO.inspect "#######################################"
-    IO.inspect "LINKEX START_LINK"
+    IO.inspect "LINX START_LINK"
     IO.inspect args
     IO.inspect "#######################################"
     GenServer.start_link(__MODULE__, args)

@@ -5,6 +5,14 @@ defmodule Linx.Application do
 
   use Application
 
+  def init(arg) do
+    # IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    # IO.inspect "LINX INIT"
+    # IO.inspect arg
+    # IO.inspect "+++++++++++++++++++++++++++++++++++++++"
+    {:ok, arg}
+  end
+
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
@@ -18,6 +26,11 @@ defmodule Linx.Application do
       # Start a worker by calling: Linx.Worker.start_link(arg)
       # {Linx.Worker, arg}
     ]
+
+    # IO.inspect "---------------------------------------"
+    # IO.inspect "STARTING LINKEX APP"
+    # IO.inspect Application.get_all_env(:linx)
+    # IO.inspect "---------------------------------------"
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

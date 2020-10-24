@@ -72,9 +72,10 @@ Notes:
 - [x] Create New UI
 - [x] Install Kaffy
 - [x] Install Metrics Dashboard
+- [x] Copy Favicon
 
-- [ ] Copy Favicon
 - [ ] Convert to Ecto/Postgres
+
 - [ ] Get Pages working
 
 - [ ] Get Menu Working 
