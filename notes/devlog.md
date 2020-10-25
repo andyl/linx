@@ -77,6 +77,10 @@ Notes:
 
 ## 2020 Oct 26 Sun
 
+- [x] Get PETS modules working
+
+- [ ] Create Home Page
+
 - [ ] Convert to Ecto/Postgres
 
 ## TBD

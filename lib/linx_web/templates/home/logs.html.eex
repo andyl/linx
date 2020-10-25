@@ -1,0 +1,23 @@
+<h3>LOGS</h3>
+<p></p>
+<table class="table table-sm">
+<%= for log <- @all do %>
+  <tr>
+    <td>
+      <%= DateTime.to_string(log.ts_used_at) |> String.slice(0..18) %>
+    </td>
+    <td>
+      <%= log.url_hash %>
+    </td>
+    <td>
+      <%= log.use_count %>
+    </td>
+    <td>
+      <%= log.url_base %>
+    </td>
+    <td>
+      <%= log.url_host %>
+    </td>
+  </tr>
+<% end %>
+</table>

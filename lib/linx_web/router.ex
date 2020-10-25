@@ -35,7 +35,14 @@ defmodule LinxWeb.Router do
   scope "/", LinxWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    get "/",      HomeController, :index
+    get "/urls",  HomeController, :urls
+    get "/logs",  HomeController, :logs
+    get "/stats", HomeController, :stats
+    get "/:key",  HomeController, :key_direct
+
+    live "/demo", Demo
+    # live "/", PageLive, :index
   end
 
   # Other scopes may use custom stacks.
