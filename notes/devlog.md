@@ -73,14 +73,17 @@ Notes:
 - [x] Install Kaffy
 - [x] Install Metrics Dashboard
 - [x] Copy Favicon
+- [x] All tests pass
+
+## 2020 Oct 26 Sun
 
 - [ ] Convert to Ecto/Postgres
+
+## TBD
 
 - [ ] Get Pages working
 
 - [ ] Get Menu Working 
-
-## TBD
 
 - [ ] Fix sorting on /urls and /logs
 

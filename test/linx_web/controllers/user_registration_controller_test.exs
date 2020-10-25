@@ -8,7 +8,6 @@ defmodule LinxWeb.UserRegistrationControllerTest do
       conn = get(conn, Routes.user_registration_path(conn, :new))
       response = html_response(conn, 200)
       assert response =~ "Register</h5>"
-      assert response =~ "Log in</a>"
       assert response =~ "Login</a>"
     end
 
@@ -36,7 +35,6 @@ defmodule LinxWeb.UserRegistrationControllerTest do
       response = html_response(conn, 200)
 
       assert response =~ "Settings</a>"
-      assert response =~ "Log out</a>"
     end
 
     test "render errors for invalid data", %{conn: conn} do

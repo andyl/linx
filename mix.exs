@@ -38,6 +38,7 @@ defmodule Linx.MixProject do
       {:ecto_sql, "~> 3.4"},
       {:phoenix_ecto, "~> 4.1"},
       # ----- Persistence
+      {:pets, path: "~/src/pets"},
       {:postgrex, ">= 0.0.0"},
       # ----- GraphQL
       {:absinthe, "~> 1.5.0"},
