@@ -57,12 +57,12 @@
 - [x] Add URL page
 - [x] Add Log page
 
-## 2020 Oct 24 Fri
+## 2020 Oct 23 Fri
 
 - [x] Get linx working
 - [x] Get devito working
 
-## 2020 Oct 25 Sat
+## 2020 Oct 24 Sat
 
 Notes:
 - used 'Fullstack Phoenix' generator
@@ -75,11 +75,12 @@ Notes:
 - [x] Copy Favicon
 - [x] All tests pass
 
-## 2020 Oct 26 Sun
+## 2020 Oct 25 Sun
 
 - [x] Get PETS modules working
+- [x] Create Home Page
 
-- [ ] Create Home Page
+## 2020 Oct 26 Mon
 
 - [ ] Convert to Ecto/Postgres
 

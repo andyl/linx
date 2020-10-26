@@ -3,6 +3,7 @@ defmodule Linx.Data.LinkTest do
 
   alias Linx.Data.Link
 
+
   setup do
     Link.cleanup()
     :ok

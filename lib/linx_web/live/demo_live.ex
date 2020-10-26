@@ -1,4 +1,4 @@
-defmodule LinxWeb.Demo do
+defmodule LinxWeb.DemoLive do
   use Phoenix.LiveView
   use Timex
   alias LinxWeb.DemoView
@@ -8,7 +8,7 @@ defmodule LinxWeb.Demo do
   end
 
   def mount(_session, socket) do
-    :timer.send_interval(10000, self(), :tick)
+    :timer.send_interval(10_000, self(), :tick)
     {:ok, assign(socket, count: 0, valid_url: false, update_str: "", date: ldate())}
   end
 

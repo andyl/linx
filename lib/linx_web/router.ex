@@ -32,17 +32,19 @@ defmodule LinxWeb.Router do
     forward "/", Absinthe.Plug, schema: LinxWeb.Schema
   end
 
-  scope "/", LinxWeb do
+  scope "/" do
     pipe_through :browser
 
-    get "/",      HomeController, :index
-    get "/urls",  HomeController, :urls
-    get "/logs",  HomeController, :logs
-    get "/stats", HomeController, :stats
-    get "/:key",  HomeController, :key_direct
+    live "/", LinxWeb.PageLive, :index
+    live "/alt", LinxWeb.AltLive, :alt
+    # get "/",      LinxWeb.HomeController, :index
+
+    get "/urls",  LinxWeb.HomeController, :urls
+    get "/logs",  LinxWeb.HomeController, :logs
+    get "/stats", LinxWeb.HomeController, :stats
+    get "/:key",  LinxWeb.HomeController, :key_direct
 
     live "/demo", Demo
-    # live "/", PageLive, :index
   end
 
   # Other scopes may use custom stacks.
