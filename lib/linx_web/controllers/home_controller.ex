@@ -1,10 +1,6 @@
 defmodule LinxWeb.HomeController do
   use LinxWeb, :controller
 
-  def init(conn, _params) do
-    conn
-  end
-
   def index(conn, _params) do
     conn
     |> assign(:url_host, Linx.Url.conn_host(conn))

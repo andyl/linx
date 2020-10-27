@@ -3,6 +3,7 @@ defmodule LinxWeb.Router do
   use Kaffy.Routes #, scope: "/admin", pipe_through: [:some_plug, :authenticate]
 
   import LinxWeb.UserAuth
+  import LinxWeb.SessionPlug
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -12,6 +13,7 @@ defmodule LinxWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+    plug :set_url_host
   end
 
   pipeline :api do
@@ -35,8 +37,9 @@ defmodule LinxWeb.Router do
   scope "/" do
     pipe_through :browser
 
-    live "/", LinxWeb.PageLive, :index
-    live "/alt", LinxWeb.AltLive, :alt
+    live "/",     LinxWeb.PageLive, :index
+    live "/alt",  LinxWeb.AltLive,  :alt
+    live "/form", LinxWeb.FormLive, :form
     # get "/",      LinxWeb.HomeController, :index
 
     get "/urls",  LinxWeb.HomeController, :urls
